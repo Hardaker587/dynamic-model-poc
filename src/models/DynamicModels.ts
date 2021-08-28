@@ -1,4 +1,4 @@
-import { Document, Model, model, Schema } from "mongoose";
+import { Document, Model, model, models, Schema } from "mongoose";
 
 /**
  * Interface to model the Dynamic Model Schema for TypeScript.
@@ -22,6 +22,6 @@ const dynamicModelSchema: Schema = new Schema({
     },
 });
 
-const dynamicModel = model<IDynamicModel>("DynamicModel", dynamicModelSchema);
+const dynamicModel = models.DynamicModel || model<IDynamicModel>("DynamicModel", dynamicModelSchema);
 
 export default dynamicModel;
