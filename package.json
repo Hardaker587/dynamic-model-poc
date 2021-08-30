@@ -35,6 +35,8 @@
     "@types/jsonwebtoken": "^8.3.2",
     "@types/mongoose": "^5.5.0",
     "concurrently": "^4.1.0",
+    "express-swagger-generator": "^1.1.17",
+    "express-swagger-generator-types": "^1.1.17",
     "nodemon": "^1.19.0"
   }
 }

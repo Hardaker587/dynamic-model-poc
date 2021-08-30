@@ -8,7 +8,7 @@ import Request from "../types/Request";
 
 export default function(req: Request, res: Response, next: NextFunction) {
   // Get token from header
-  const token = req.header("authorization");
+  const token = req.header("Authorization");
 
   // Check if no token
   if (!token) {

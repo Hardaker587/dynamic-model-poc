@@ -11,10 +11,23 @@ import Request from "../../types/Request";
 import User, { IUser } from "../../models/User";
 
 const router: Router = Router();
+/**
+ * @typedef User
+ * @property {string} email
+ * @property {string} password.required - Some description for product
+ */
 
-// @route   GET api/auth
-// @desc    Get authenticated user given the token
-// @access  Private
+/**
+ * Get user info
+ * @route GET /api/auth - Get user info
+ * @desc Get user info
+ * @group Authentication - Authentications
+ * @returns {object} 200 - User
+ * @returns {Error}  default - Unexpected error
+ * @access Private
+ * @security JWT
+ */
+
 router.get("/", auth, async (req: Request, res: Response) => {
   try {
     const user: IUser = await User.findById(req.userId).select("-password");
@@ -25,9 +38,16 @@ router.get("/", auth, async (req: Request, res: Response) => {
   }
 });
 
-// @route   POST api/auth
-// @desc    Login user and get token
-// @access  Public
+/**
+ * Login user and get token
+ * @route POST /api/auth - Login user and get token
+ * @group Authentication - Authentications
+ * @param {User.model} User.body.required
+ * @returns {object} 200 - User token
+ * @returns {Error}  default - Unexpected error
+ * @access Public
+ */
+
 router.post(
   "/",
   [
