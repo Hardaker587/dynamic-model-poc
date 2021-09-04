@@ -53,7 +53,7 @@ let options = {
 // @desc    Test Base API
 // @access  Public
 app.get("/", (_req, res) => {
-  res.json("API Running");
+  res.redirect("/api-docs");
 });
 
 app.use("/api/auth", auth);

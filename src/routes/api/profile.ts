@@ -6,12 +6,21 @@ import auth from "../../middleware/auth";
 import Profile, { IProfile } from "../../models/Profile";
 import Request from "../../types/Request";
 import User, { IUser } from "../../models/User";
+import adminAuth from "../../middleware/adminAuth";
 
 const router: Router = Router();
 
-// @route   GET api/profile/me
-// @desc    Get current user's profile
-// @access  Private
+/**
+ * Get current user's profile
+ * @route GET /api/profile/me - Get current user's profile
+ * @desc Get current user's profile
+ * @group Profile - user profile actions
+ * @returns {object} 200 - User profile
+ * @returns {Error}  default - Unexpected error
+ * @access Private
+ * @security JWT
+ */
+
 router.get("/me", auth, async (req: Request, res: Response) => {
   try {
     const profile: IProfile = await Profile.findOne({
@@ -101,10 +110,21 @@ router.post(
   }
 );
 
+/**
+ * Get all profiles
+ * @route GET /api/profile - Get all profiles
+ * @desc Get all profiles
+ * @group Profile - user profile actions
+ * @returns {object} 200 - User profiles
+ * @returns {Error}  default - Unexpected error
+ * @access Private
+ * @security JWT
+ */
+
 // @route   GET api/profile
 // @desc    Get all profiles
 // @access  Public
-router.get("/", async (_req: Request, res: Response) => {
+router.get("/", adminAuth, async (_req: Request, res: Response) => {
   try {
     const profiles = await Profile.find().populate("user", ["avatar", "email"]);
     res.json(profiles);

@@ -1,4 +1,5 @@
 import { Document, Model, model, Schema } from "mongoose";
+import RoleEnums from '../enums/roleEnums'
 
 /**
  * Interface to model the User Schema for TypeScript.
@@ -10,6 +11,7 @@ export interface IUser extends Document {
   email: string;
   password: string;
   avatar: string;
+  role: RoleEnums;
 }
 
 const userSchema: Schema = new Schema({
@@ -24,6 +26,10 @@ const userSchema: Schema = new Schema({
   },
   avatar: {
     type: String
+  },
+  role: {
+    type: RoleEnums,
+    default: RoleEnums.user
   },
   date: {
     type: Date,

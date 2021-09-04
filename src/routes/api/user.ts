@@ -12,9 +12,23 @@ import User, { IUser } from "../../models/User";
 
 const router: Router = Router();
 
-// @route   POST api/user
-// @desc    Register user given their email and password, returns the token upon successful registration
-// @access  Public
+/**
+ * @typedef User
+ * @property {string} email
+ * @property {string} password.required - Some description for product
+ */
+
+
+/**
+ * Register user given their email and password, returns the token upon successful registration
+ * @route Post /api/user - Register user given their email and password, returns the token upon successful registration
+ * @group Users
+ * @param {User.model} User.body.required
+ * @returns {object} 200 - Successfully registered
+ * @returns {Error}  default - Unexpected error
+ * @access Public
+ */
+
 router.post(
   "/",
   [
@@ -69,7 +83,8 @@ router.post(
       await user.save();
 
       const payload: Payload = {
-        userId: user.id
+        userId: user.id,
+        role: user.role
       };
 
       jwt.sign(

@@ -8,7 +8,7 @@
     "tsc": "tsc",
     "watch-tsc": "tsc -w",
     "deploy": "node dist/src/server.js",
-    "watch-deploy": "nodemon dist/src/server.js",
+    "watch-deploy": "nodemon dist/src/server.js --open",
     "server": "concurrently \"npm run watch-tsc\" \"npm run watch-deploy\"",
     "start": "npm run deploy",
     "heroku-postbuild": "npm run tsc"
