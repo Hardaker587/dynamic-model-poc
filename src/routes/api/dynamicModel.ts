@@ -132,7 +132,7 @@ router.post("/createData", [
                 return res.status(HttpStatusCodes.BAD_REQUEST).json({
                     errors: [
                         {
-                            msg: "User not registered",
+                            msg: "Document does not exist",
                         },
                     ],
                 });
