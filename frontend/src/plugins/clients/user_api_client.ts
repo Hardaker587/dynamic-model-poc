@@ -1,12 +1,11 @@
-import { Configuration, UsersApi } from '../../api'
+import {Configuration, UsersApi} from '../../api'
 
+const configuration = new Configuration({ basePath: String(import.meta.env.VITE_BASE_URL)})
+const usersApi = new UsersApi(configuration)
 export default {
     install: (app: any, options: any) => {
-        const baseUrl = import.meta.env.BASE_URL
-        const configuration = new Configuration()
-        const userApi = new UsersApi(configuration)
+        app.config.globalProperties.$user_api = usersApi
 
-        app.config.globalProperties.$user_api = userApi
-        app.provide('user_api', userApi)
+        app.provide('user_api', { usersApi })
     },
 }
