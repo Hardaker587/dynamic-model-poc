@@ -1,0 +1,23 @@
+{
+  "name": "dynamic-model-poc",
+  "version": "1.0.0",
+  "description": "Proving a concept can be difficult with just words",
+  "main": "frontend/index.html",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "install-web": "cd frontend && npm install && cd -",
+    "install-api": "cd backend && npm install && cd -",
+    "install": "npm run install-web && npm run install-api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hardaker587/dynamic-model-poc.git"
+  },
+  "author": "Gavin Hardaker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hardaker587/dynamic-model-poc/issues"
+  },
+  "homepage": "https://github.com/Hardaker587/dynamic-model-poc#readme"
+}

@@ -1,15 +1,14 @@
 <template>
     <div class="container mx-auto">
         <p class="text-6xl font-black">Register</p>
+        <registerForm />
     </div>
 </template>
 
 <script>
-    export default {
-        name: "register"
-    }
+import registerForm from '../../components/forms/register.vue'
+export default {
+    name: 'register',
+    components: { registerForm },
+}
 </script>
-
-<style scoped>
-
-</style>
