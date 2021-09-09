@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto">
-        <p class="text-6xl font-black">Register</p>
+        <p class="text-6xl font-black text-white">Register</p>
         <registerForm />
     </div>
 </template>

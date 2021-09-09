@@ -7,16 +7,34 @@ import Header from './components/interface/header.vue'
 
 <template>
     <Header />
-    <router-view />
+    <div
+        class="
+            container
+            px-0
+            body-container
+            flex flex-col
+            justify-center
+            bg-gradient-to-r
+            from-purple-400
+            via-pink-500
+            to-red-500
+            max-w-full
+        "
+    >
+        <router-view />
+    </div>
 </template>
 
 <style>
+.body-container {
+    min-height: calc(100vh - 60px);
+}
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 80px;
+    margin-top: 60px;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <form class="m-4">
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 gap-4">
             <div class="flex flex-col items-start">
-                <label for="email">Email</label>
+              <label class="text-white font-bold" for="email">Email</label>
                 <input
                     v-model="user.email"
                     name="email"
@@ -12,7 +12,7 @@
                 />
             </div>
             <div class="flex flex-col items-start">
-                <label for="password">Password</label>
+              <label class="text-white font-bold" for="password">Password</label>
                 <input
                     v-model="user.password"
                     id="password"
@@ -32,7 +32,6 @@
                     py-2
                     px-4
                     rounded
-                    mx-2
                 "
                 @click="registerUser()"
             >

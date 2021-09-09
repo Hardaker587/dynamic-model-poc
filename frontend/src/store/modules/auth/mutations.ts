@@ -3,6 +3,9 @@ import { AuthStateInterface } from './state'
 import RoleEnums from '../../../enums/authroles.enum'
 
 const mutations: MutationTree<AuthStateInterface> = {
+    SET_USER_TOKEN(state: AuthStateInterface, token: string) {
+        state.token = token
+    },
     SET_USER(state: AuthStateInterface, user: Record<string, unknown>) {
         state.user = user
     },

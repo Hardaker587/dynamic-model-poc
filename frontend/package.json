@@ -9,7 +9,7 @@
   "dependencies": {
     "vue": "^3.2.6",
     "vue-router": "^4.0.11",
-    "vuex": "^3.6.2"
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.2.5",

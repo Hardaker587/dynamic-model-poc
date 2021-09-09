@@ -3,6 +3,9 @@ import { StateInterface } from '../../index'
 import { AuthStateInterface } from './state'
 
 const actions: ActionTree<AuthStateInterface, StateInterface> = {
+    COMMIT_USER_TOKEN({ commit }, token) {
+        commit('SET_USER_TOKEN', token)
+    },
     COMMIT_USER({ commit }, user) {
         commit('SET_USER', JSON.parse(user))
     },

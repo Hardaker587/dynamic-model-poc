@@ -1,11 +1,9 @@
-import { Configuration, AuthenticationApi } from '../../api'
+import { AuthenticationService } from '../../service/authentication.service'
 
-const configuration = new Configuration({ basePath: String(import.meta.env.VITE_BASE_URL)})
-const authenticationApi = new AuthenticationApi(configuration)
 export default {
     install: (app: any, options: any) => {
-        app.config.globalProperties.$authentication_api = authenticationApi
+        app.config.globalProperties.$authentication_api = new AuthenticationService()
 
-        app.provide('authentication_api', { authenticationApi })
+        app.provide('authentication_api', { AuthenticationService })
     },
 }
