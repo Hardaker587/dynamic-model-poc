@@ -14,10 +14,22 @@ export class AuthenticationService {
         this.store = store
     }
 
-    public async login(user: User): Promise<void> {
-        await this.client.apiAuthPost({ user: user }).then((res) => {
-            console.log(res)
-            store.dispatch('AuthStateModule/COMMIT_USER_TOKEN', res)
-        })
+    private loginRequest(user: User): Promise<void> {
+        return this.client.apiAuthPost({ user: user })
+    }
+
+    public async login(user: User) {
+        console.log(
+            await this.loginRequest(user)
+        )
+        this.loginRequest(user)
+            .then((response: any) => {
+                console.log(response)
+                return response
+            })
+            .then((data: any) => {
+                console.log(data)
+                store.dispatch('AuthStateModule/COMMIT_USER_TOKEN', data)
+            })
     }
 }

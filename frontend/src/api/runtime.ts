@@ -149,7 +149,7 @@ export class Configuration {
     }
 
     get fetchApi(): FetchAPI {
-        return <(input: RequestInfo, init?: RequestInit) => Promise<Response>>this.configuration.fetchApi;
+        return this.configuration.fetchApi;
     }
 
     get middleware(): Middleware[] {
