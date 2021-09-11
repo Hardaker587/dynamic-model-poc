@@ -5,7 +5,7 @@
                 <router-link to="/" class="font-bold text-xl text-indigo-600"
                     >Dynamic Models</router-link
                 >
-                <div>
+                <div v-if="!this.$authentication_api.loggedIn()">
                     <router-link
                         to="login"
                         class="
@@ -39,6 +39,26 @@
                         >Signup</router-link
                     >
                 </div>
+              <div v-if="this.$authentication_api.loggedIn()">
+                <button
+                    type="button"
+                    class="
+                            p-2
+                            lg:px-4
+                            md:mx-2
+                            text-red-600 text-center
+                            border border-solid border-red-600
+                            rounded
+                            hover:bg-red-600 hover:text-white
+                            transition-colors
+                            duration-300
+                            mt-1
+                            md:mt-0 md:ml-1
+                        "
+                    @click="this.$authentication_api.logOut()"
+                >Log out</button
+                >
+              </div>
             </div>
         </div>
     </nav>

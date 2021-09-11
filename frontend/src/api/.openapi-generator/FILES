@@ -8,6 +8,7 @@ models/DynamicDataRequestModel.ts
 models/DynamicModel.ts
 models/Model.ts
 models/Property.ts
+models/Token.ts
 models/User.ts
 models/index.ts
 runtime.ts

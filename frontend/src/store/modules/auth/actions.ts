@@ -7,7 +7,7 @@ const actions: ActionTree<AuthStateInterface, StateInterface> = {
         commit('SET_USER_TOKEN', token)
     },
     COMMIT_USER({ commit }, user) {
-        commit('SET_USER', JSON.parse(user))
+        commit('SET_USER', user)
     },
     COMMIT_LOGGED_IN({ commit }, loggedIn) {
         commit('SET_LOGGED_IN', loggedIn)

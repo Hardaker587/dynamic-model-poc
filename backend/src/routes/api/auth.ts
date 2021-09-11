@@ -18,6 +18,11 @@ const router: Router = Router();
  */
 
 /**
+ * @typedef Token
+ * @property {string} token
+ */
+
+/**
  * Get user info
  * @route GET /api/auth - Get user info
  * @desc Get user info
@@ -43,7 +48,7 @@ router.get("/", auth, async (req: Request, res: Response) => {
  * @route POST /api/auth - Login user and get token
  * @group Authentication - Authentications
  * @param {User.model} User.body.required
- * @returns {object} 200 - User token
+ * @returns {Token.model} 200 - User token
  * @returns {Error}  default - Unexpected error
  * @access Public
  */
@@ -54,7 +59,7 @@ router.post(
     check("email", "Please include a valid email").isEmail(),
     check("password", "Password is required").exists()
   ],
-  async (req: Request, res: Response) => {
+  async (req: Request, res: Response): Promise<object> => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res
@@ -100,6 +105,7 @@ router.post(
         (err, token) => {
           if (err) throw err;
           res.json({ token });
+          return { token }
         }
       );
     } catch (err) {

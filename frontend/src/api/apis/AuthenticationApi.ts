@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    Token,
+    TokenFromJSON,
+    TokenToJSON,
     User,
     UserFromJSON,
     UserToJSON,
@@ -61,7 +64,7 @@ export class AuthenticationApi extends runtime.BaseAPI {
     /**
      * Login user and get token
      */
-    async apiAuthPostRaw(requestParameters: ApiAuthPostRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async apiAuthPostRaw(requestParameters: ApiAuthPostRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<Token>> {
         if (requestParameters.user === null || requestParameters.user === undefined) {
             throw new runtime.RequiredError('user','Required parameter requestParameters.user was null or undefined when calling apiAuthPost.');
         }
@@ -80,14 +83,15 @@ export class AuthenticationApi extends runtime.BaseAPI {
             body: UserToJSON(requestParameters.user),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => TokenFromJSON(jsonValue));
     }
 
     /**
      * Login user and get token
      */
-    async apiAuthPost(requestParameters: ApiAuthPostRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.apiAuthPostRaw(requestParameters, initOverrides);
+    async apiAuthPost(requestParameters: ApiAuthPostRequest, initOverrides?: RequestInit): Promise<Token> {
+        const response = await this.apiAuthPostRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

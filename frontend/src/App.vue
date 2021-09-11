@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { AuthenticationService } from './service/authentication.service'
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/interface/header.vue'
+new AuthenticationService().persistentUser()
 </script>
 
 <template>
@@ -24,7 +26,6 @@ import Header from './components/interface/header.vue'
         <router-view />
     </div>
 </template>
-
 <style>
 .body-container {
     min-height: calc(100vh - 60px);
